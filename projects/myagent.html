@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>myagent — Case Study · Nethusara</title>
+<meta name="description" content="myagent: a command-line AI agent with Groq function calling and Google Calendar tools. The problem, the build, and the outcome."/>
+<meta name="color-scheme" content="dark"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d9ff4b'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/style.css"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<div id="wipe" aria-hidden="true"><div class="w-word"></div></div>
+<div id="loader" aria-hidden="true">
+  <div class="l-word"><span>myagent</span></div>
+  <div class="l-bar"><i></i></div>
+  <div class="l-count"><b>0</b>%</div>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html" data-wipe="Home"><span class="dot"></span>nethusara</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html#work" data-wipe="Work">Work</a>
+      <a href="../index.html#about" data-wipe="About">About</a>
+      <a href="../index.html#toolbox" data-wipe="Toolbox">Toolbox</a>
+      <a href="../index.html#contact" data-wipe="Contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="../index.html#contact" data-wipe="Contact">Let&rsquo;s talk</a>
+    <button class="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+  <section class="p-hero">
+    <div class="orb orb-1"></div><div class="orb orb-2"></div>
+    <div class="wrap" style="position:relative;z-index:2">
+      <a class="p-crumb" href="../index.html#work" data-wipe="Work"><span class="circle">&rarr;</span>All projects</a>
+      <span class="p-num">CASE STUDY &mdash; 02</span>
+      <h1><span class="line"><span>myagent</span></span></h1>
+      <p class="p-tagline">A <em>command-line AI agent</em> that turns plain English into actions &mdash; calendar lookups, calculations and tool calls, through conversation instead of clicks.</p>
+      <div class="p-meta">
+        <div><b>ROLE</b><span>Solo developer</span></div>
+        <div><b>STACK</b><span>Python · Groq · Google Calendar API</span></div>
+        <div><b>PLATFORM</b><span>Command line</span></div>
+        <div><b>STATUS</b><span>Working prototype</span></div>
+      </div>
+      <div class="p-links">
+        <a class="btn btn-primary" href="https://github.com/nethusara003/personal-agent" target="_blank" rel="noreferrer">Source code <span class="arr">&nearr;</span></a>
+        <span class="chip">CLI TOOL &mdash; RUNS IN YOUR TERMINAL</span>
+      </div>
+      <div class="p-showcase" data-reveal>
+        <div class="mock" data-mockup="myagent"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap p-body">
+      <div class="p-sticky" data-reveal>
+        <span class="sec-num">THE PROBLEM</span>
+        <h2>Your calendar shouldn&rsquo;t need <em>a mouse.</em></h2>
+        <p>Why this project exists, and who it&rsquo;s for.</p>
+      </div>
+      <div class="p-prose" data-reveal>
+        <p class="lead">Checking your schedule means opening a browser, clicking through a calendar UI, and scanning for the answer.</p>
+        <p>That&rsquo;s slow for something you ask ten times a day. The faster interface is <strong>language</strong>: <em>&ldquo;what are my upcoming events?&rdquo;</em> &mdash; asked where developers already live, the terminal.</p>
+        <p>myagent closes that gap: a conversational agent that understands the request, calls the right tool, and answers in plain text.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-2);border-block:1px solid var(--line)">
+    <div class="wrap p-body">
+      <div class="p-sticky" data-reveal>
+        <span class="sec-num">WHAT I BUILT</span>
+        <h2>Conversation, compiled <em>to actions.</em></h2>
+        <p>The engineering decisions that make it work.</p>
+      </div>
+      <div data-reveal>
+        <div class="feat"><span class="n">01</span><div><h3>Groq function calling core</h3><p>Built on the Groq Chat Completions API with declared tool definitions &mdash; the model decides <em>which</em> tool to call and with what arguments, and the agent executes and responds. Default model <em>openai/gpt-oss-120b</em>, overridable via environment.</p></div></div>
+        <div class="feat"><span class="n">02</span><div><h3>A practical tool set</h3><p><em>get_current_time</em> and <em>add_numbers</em> for quick answers, plus <em>list_upcoming_events</em> &mdash; real Google Calendar data through OAuth, so &ldquo;what&rsquo;s on today?&rdquo; returns your actual schedule.</p></div></div>
+        <div class="feat"><span class="n">03</span><div><h3>CLI UX that respects flow</h3><p>An interactive REPL for back-and-forth, and single-prompt mode for scripting &mdash; <em>myagent &ldquo;what is 1234 + 5678?&rdquo;</em>. Installs with pip into a virtualenv, zero ceremony.</p></div></div>
+        <div class="feat"><span class="n">04</span><div><h3>Credential hygiene by default</h3><p>API keys and OAuth tokens live in <em>.env</em>, <em>credentials.json</em> and <em>token.json</em> &mdash; all gitignored, all documented with placeholders. Secrets never ship with the code.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-outcomes sec">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div><span class="sec-num">OUTCOME &amp; LEARNING</span>
+          <h2>What it <em>proved.</em></h2></div>
+      </div>
+      <div class="out-grid" data-reveal>
+        <div><span class="ok">OUTCOME</span><h3>Natural-language calendar control</h3><p>Ask in English, get your real upcoming events back &mdash; the full loop from prompt to tool call to answer works end to end.</p></div>
+        <div><span class="ok">OUTCOME</span><h3>Extensible tool design</h3><p>Adding a capability means declaring one function &mdash; the agent pattern scales without rewriting the core.</p></div>
+        <div><span class="ok">LEARNING</span><h3>Agents are interface design</h3><p>Function-calling schemas, OAuth flows and CLI ergonomics &mdash; the hard part of an agent isn&rsquo;t the model, it&rsquo;s the contract between language and tools.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-next">
+    <div class="wrap">
+      <a href="smart-financial-tracker.html" data-wipe="Smart Financial Tracker" data-reveal>
+        <div><span class="lbl">NEXT PROJECT &mdash; 03</span><h3>Smart Financial Tracker</h3></div>
+        <span class="big-arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; <span data-year>2026</span> Nethusara &mdash; Computer Science &middot; Web &middot; AI</span>
+    <span><a href="../index.html" data-wipe="Home">Home</a> &middot; <a href="https://github.com/nethusara003/personal-agent" target="_blank" rel="noreferrer">Source</a></span>
+  </div>
+</footer>
+</body>
+</html>

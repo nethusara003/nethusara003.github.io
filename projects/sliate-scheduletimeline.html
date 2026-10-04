@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+<title>SLIATE ScheduleTimeLine — Case Study · Nethusara</title>
+<meta name="description" content="SLIATE ScheduleTimeLine: a visual academic schedule app. The problem, the build, and the outcome."/>
+<meta name="color-scheme" content="dark"/>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23d9ff4b'/%3E%3C/svg%3E"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/style.css"/>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js" defer></script>
+<script src="../assets/js/main.js" defer></script>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+<div class="cursor-dot" aria-hidden="true"></div>
+<div class="cursor-ring" aria-hidden="true"></div>
+<div id="wipe" aria-hidden="true"><div class="w-word"></div></div>
+<div id="loader" aria-hidden="true">
+  <div class="l-word"><span>SLIATE ScheduleTimeLine</span></div>
+  <div class="l-bar"><i></i></div>
+  <div class="l-count"><b>0</b>%</div>
+</div>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html" data-wipe="Home"><span class="dot"></span>nethusara</a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="../index.html#work" data-wipe="Work">Work</a>
+      <a href="../index.html#about" data-wipe="About">About</a>
+      <a href="../index.html#toolbox" data-wipe="Toolbox">Toolbox</a>
+      <a href="../index.html#contact" data-wipe="Contact">Contact</a>
+    </nav>
+    <a class="nav-cta" href="../index.html#contact" data-wipe="Contact">Let&rsquo;s talk</a>
+    <button class="burger" aria-label="Menu"><i></i><i></i><i></i></button>
+  </div>
+</header>
+
+<main>
+  <section class="p-hero">
+    <div class="orb orb-1"></div><div class="orb orb-2"></div>
+    <div class="wrap" style="position:relative;z-index:2">
+      <a class="p-crumb" href="../index.html#work" data-wipe="Work"><span class="circle">&rarr;</span>All projects</a>
+      <span class="p-num">CASE STUDY &mdash; 04</span>
+      <h1><span class="line"><span>SLIATE</span></span><span class="line"><span>ScheduleTimeLine</span></span></h1>
+      <p class="p-tagline">A <em>responsive schedule app</em> that turns dense academic timetables into a visual timeline you can read at a glance.</p>
+      <div class="p-meta">
+        <div><b>ROLE</b><span>Solo developer</span></div>
+        <div><b>STACK</b><span>React · Vite</span></div>
+        <div><b>PLATFORM</b><span>Web &mdash; responsive</span></div>
+        <div><b>STATUS</b><span>Working prototype</span></div>
+      </div>
+      <div class="p-links">
+        <a class="btn btn-primary" href="https://github.com/nethusara003/SLIATE-ScheduleTimeLine" target="_blank" rel="noreferrer">Source code <span class="arr">&nearr;</span></a>
+      </div>
+      <div class="p-showcase" data-reveal>
+        <div class="mock" data-mockup="sliate"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap p-body">
+      <div class="p-sticky" data-reveal>
+        <span class="sec-num">THE PROBLEM</span>
+        <h2>Timetables are <em>walls of text.</em></h2>
+        <p>Why this project exists, and who it&rsquo;s for.</p>
+      </div>
+      <div class="p-prose" data-reveal>
+        <p class="lead">Academic schedules arrive as dense grids &mdash; rows of times, codes and room numbers that take real effort to decode.</p>
+        <p>Students don&rsquo;t need more data; they need <strong>shape</strong>. When a week becomes a timeline &mdash; blocks positioned in time, a marker for <em>now</em>, color by subject &mdash; the question <em>&ldquo;what&rsquo;s next?&rdquo;</em> answers itself.</p>
+        <p>SLIATE ScheduleTimeLine is that translation: timetable data in, a glanceable visual week out.</p>
+      </div>
+    </div>
+  </section>
+
+  <section style="background:var(--bg-2);border-block:1px solid var(--line)">
+    <div class="wrap p-body">
+      <div class="p-sticky" data-reveal>
+        <span class="sec-num">WHAT I BUILT</span>
+        <h2>Time, made <em>visible.</em></h2>
+        <p>The engineering decisions that make it work.</p>
+      </div>
+      <div data-reveal>
+        <div class="feat"><span class="n">01</span><div><h3>Timeline-first week view</h3><p>Classes render as positioned blocks on a time axis &mdash; duration becomes length, overlaps become obvious, and a <em>now</em> indicator anchors you in the day.</p></div></div>
+        <div class="feat"><span class="n">02</span><div><h3>Data-driven rendering</h3><p>The schedule lives as structured data, so the UI stays consistent: same event, same color, same shape everywhere &mdash; change the data, the timeline follows.</p></div></div>
+        <div class="feat"><span class="n">03</span><div><h3>Responsive by default</h3><p>Built mobile-first with React + Vite &mdash; the timeline reflows from desktop week view to a pocket-sized day view without losing readability.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-outcomes sec">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div><span class="sec-num">OUTCOME &amp; LEARNING</span>
+          <h2>What it <em>proved.</em></h2></div>
+      </div>
+      <div class="out-grid" data-reveal>
+        <div><span class="ok">OUTCOME</span><h3>Glanceable scheduling</h3><p>A full semester week readable in seconds &mdash; the core UX bet of the project, delivered.</p></div>
+        <div><span class="ok">OUTCOME</span><h3>Clean React structure</h3><p>Component-driven timeline built on Vite&rsquo;s fast dev loop &mdash; quick to iterate, easy to extend.</p></div>
+        <div><span class="ok">LEARNING</span><h3>Data visualization thinking</h3><p>Position, length and color carry meaning faster than text &mdash; designing with visual encoding instead of tables.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="p-next">
+    <div class="wrap">
+      <a href="vocalis.html" data-wipe="Vocalis" data-reveal>
+        <div><span class="lbl">NEXT PROJECT &mdash; 01</span><h3>Vocalis</h3></div>
+        <span class="big-arrow">&rarr;</span>
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>&copy; <span data-year>2026</span> Nethusara &mdash; Computer Science &middot; Web &middot; AI</span>
+    <span><a href="../index.html" data-wipe="Home">Home</a> &middot; <a href="https://github.com/nethusara003/SLIATE-ScheduleTimeLine" target="_blank" rel="noreferrer">Source</a></span>
+  </div>
+</footer>
+</body>
+</html>
